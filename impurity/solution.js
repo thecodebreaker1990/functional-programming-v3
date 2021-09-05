@@ -8,8 +8,11 @@ var students = [
 	{ id: 491, name: "Ally" }
 ];
 
+// *************************************
+
+// modify/move this function
 function getStudentsByName(students) {
-	students = students.slice();
+	students = students.slice(); 
 	return sortStudentsByName();
 
 	function sortStudentsByName() {
@@ -23,20 +26,21 @@ function getStudentsByName(students) {
 	}
 }
 
+// modify/move this function
+function getStudentsByID(curStudents) { 
+	var origStudents = students.slice(); //Capture original state
+	students = curStudents.slice(); //setup new state
+	var newStudents = sortStudentsByID(); //return sorted student list
+	students = origStudents; //Restore original students
+	return newStudents; //return modified students
+}
+
 function sortStudentsByID() {
 	// Don't modify this function
 	students.sort(function byID(s1,s2){
 		return s1.id - s2.id;
 	});
 	return students;
-}
-
-function getStudentsByID(curStudents) {
-	var origStudents = students.slice(0);
-	students = curStudents;
-	var newStudents = sortStudentsByID();
-	students = origStudents;
-	return newStudents;
 }
 
 // *************************************
